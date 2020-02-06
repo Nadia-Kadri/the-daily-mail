@@ -1,6 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+// Scraping dependencies
+var axios = require("axios");
+var cheerio = require("cheerio");
 
 const PORT = 3000;
 
@@ -33,6 +36,33 @@ app.get("/articles", function(req, res) {
 	db.Article.find({})
 		.then(data => res.json(data))
 		.catch(err => res.json(err));
+});
+
+// Scrape data from WSJ and place it into Articles collection within the-daily-mail db
+app.get("/scrape", function(req, res) {
+  axios.get("https://www.wsj.com/").then(function(res) {
+    // Load the html body from axios into cheerio
+    var $ = cheerio.load(res.data);
+    
+    $("article").each(function(i, element) {
+      var title = $(element).children().text();
+      var link = $(element).find("a").attr("href");
+
+      console.log(title + link)
+
+      // if (title && link) {
+      //   // Insert the data in the scrapedData db
+      //   db.Article.insert({title: title, link: link},
+      //   (err, inserted) => {
+      //     if (err) 
+      //       console.log(err);
+      //     else 
+      //       console.log(inserted);
+      //   });
+      // }
+    });
+  });
+  res.send("Scrape Complete");
 });
 
 // Start the server
