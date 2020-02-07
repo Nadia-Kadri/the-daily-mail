@@ -13,21 +13,24 @@ module.exports = function(app) {
 			const $ = cheerio.load(res.data);
 				
 			$("article").each(function(i, element) {
-				let title = $(element).children().text();
-				let link = $(element).find("a").attr("href");
+        let title = $(element).find("h3").text();
+        let summary = $(element).find("p").text();
+        let link = $(element).find("a").attr("href");
 
 				if (title && link) {
 					// Insert the data in the-daily-mail db
-					db.Article.create({title: title, link: link})
+					db.Article.create({title: title, summary: summary, link: link})
 					.then(data => console.log(data))
 					.catch(err => console.log(err.message));
 				}
 			});
-		});
+    });
 	});
 
 	app.get("/api/articles", function(req, res) {
-		db.Article.find({})
+    db.Article.find({})
+      .limit(10)
+      // .sort("-_id")
 			.then(data => res.json(data))
 			.catch(err => res.json(err));
 	});

@@ -9,10 +9,18 @@ const ArticleSchema = new Schema({
     unique: true,
     required: true
   },
+  summary: {
+    type: String,
+    unique: true
+  },
   link: {
     type: String,
     unique: true,
     required: true
+  },
+  note: {
+    type: Schema.Types.ObjectId,
+    ref: "Note"
   }
 });
 
