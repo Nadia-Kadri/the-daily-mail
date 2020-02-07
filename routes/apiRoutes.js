@@ -25,7 +25,7 @@ module.exports = function(app) {
 			if (title && link) {
 				// Insert the data in the-daily-mail db
 				db.Article.create({title: title, link: link})
-				.then(data =>console.log(data))
+				.then(data => console.log(data))
 				.catch(err => console.log(err.message));
 			}
 			});
