@@ -1,7 +1,7 @@
 $("#scrape").on("click", function() {
 	$("#articles").empty()
 	// Grab the articles as a json
-	$.getJSON("/articles", function(data) {
+	$.getJSON("/api/articles", function(data) {
     // For each one
     for (let i = 0; i < data.length; i++) {
       // Display the apropos information on the page
