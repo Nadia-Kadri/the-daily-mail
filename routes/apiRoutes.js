@@ -31,7 +31,7 @@ module.exports = function(app) {
     db.Article.find({})
       .limit(10)
       .populate("note")
-      // .sort("-_id")
+      .sort("-_id")
 			.then(data => res.json(data))
 			.catch(err => res.json(err));
   });

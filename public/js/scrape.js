@@ -20,10 +20,10 @@ function createCard (data) {
           </h3>
         </div>
         <div class="card-body">
-          ${data[i].summary}
+          <div class="article-summary">${data[i].summary}</div>
           <hr>
-          <div class="note-display" id="note-display${data[i]._id}">Article Notes:</div>
-          <div>Add/Update Note:</div>
+          <i class="fa fa-comment-o" aria-hidden="true"></i><span class="note-display" id="note-display${data[i]._id}">Article Notes:</span><br>
+          <i class="fa fa-commenting-o" aria-hidden="true"></i><span class="note-display-add">Add/Update Note:</span><br>
           <textarea class='bodyinput' id="note${data[i]._id}" name='body'></textarea><br>
           <button type="button" class="btn btn-success add-note" id="${data[i]._id}">Submit</button>
         </div>
