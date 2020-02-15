@@ -9,15 +9,15 @@ Mongo Scraper is a node.js web application that lets users view and leave a comm
 
 * This app uses the below npm packages:
 
-  1. express
+  * express
 
-  2. express-handlebars
+  * express-handlebars
 
-  3. mongoose
+  * mongoose
 
-  4. cheerio
+  * cheerio
 
-  5. axios
+  * axios
 
 ## App Instrustiions
 
