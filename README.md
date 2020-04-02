@@ -1,4 +1,4 @@
-# the-daily-mail
+# The Daily Mail
 
 ## Try it Out
 
